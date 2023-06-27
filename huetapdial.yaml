@@ -1,18 +1,17 @@
 blueprint:
   name: Controller - PHILIPS hue Tap dial Switch
-  description: "# Controller - IKEA E1743 TRÅDFRI On/Off Switch & Dimmer\n\nController
-    automation for executing any kind of action triggered by the provided IKEA E1743
-    TRÅDFRI On/Off Switch & Dimmer. Allows to optionally loop an action on a button
-    long press.\nSupports deCONZ, ZHA, Zigbee2MQTT.\n\nAutomations created with this
+  description: "# Controller - Philips Hue Tap Dial\n\nController
+    automation for executing any kind of action triggered by the provided Philips Hue Tap Dial
+    .\nSupports Zigbee2MQTT.\n\nAutomations created with this
     blueprint can be connected with one or more [Hooks](https://epmatt.github.io/awesome-ha-blueprints/docs/blueprints/hooks)
     supported by this controller.\nHooks allow to easily create controller-based automations
     for interacting with media players, lights, covers and more.\nSee the list of
     [Hooks available for this controller](https://epmatt.github.io/awesome-ha-blueprints/docs/blueprints/controllers/ikea_e1743#available-hooks)
     for additional details.\n\n\U0001F4D5 Full documentation regarding this blueprint
     is available [here](https://epmatt.github.io/awesome-ha-blueprints/docs/blueprints/controllers/ikea_e1743).\n\n\U0001F680
-    This blueprint is part of the **[Awesome HA Blueprints](https://epmatt.github.io/awesome-ha-blueprints)
-    project**.\n\nℹ️ Version 2022.08.08\n"
-  source_url: https://github.com/EPMatt/awesome-ha-blueprints/blob/main/blueprints/controllers/ikea_e1743/ikea_e1743.yaml
+    Much of the basis code for this blueprint was obtain from **[Awesome HA Blueprints](https://epmatt.github.io/awesome-ha-blueprints)
+    project**.\n\nℹ️ Version 2023.06.27\n"
+  source_url: https://github.com/ruderthanyou/HAHueTapDial/blob/main/huetapdial.yaml
   domain: automation
   input:
     integration:
