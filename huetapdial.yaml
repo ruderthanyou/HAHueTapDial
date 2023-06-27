@@ -1,0 +1,863 @@
+blueprint:
+  name: Controller - PHILIPS hue Tap dial Switch
+  description: "# Controller - IKEA E1743 TRÅDFRI On/Off Switch & Dimmer\n\nController
+    automation for executing any kind of action triggered by the provided IKEA E1743
+    TRÅDFRI On/Off Switch & Dimmer. Allows to optionally loop an action on a button
+    long press.\nSupports deCONZ, ZHA, Zigbee2MQTT.\n\nAutomations created with this
+    blueprint can be connected with one or more [Hooks](https://epmatt.github.io/awesome-ha-blueprints/docs/blueprints/hooks)
+    supported by this controller.\nHooks allow to easily create controller-based automations
+    for interacting with media players, lights, covers and more.\nSee the list of
+    [Hooks available for this controller](https://epmatt.github.io/awesome-ha-blueprints/docs/blueprints/controllers/ikea_e1743#available-hooks)
+    for additional details.\n\n\U0001F4D5 Full documentation regarding this blueprint
+    is available [here](https://epmatt.github.io/awesome-ha-blueprints/docs/blueprints/controllers/ikea_e1743).\n\n\U0001F680
+    This blueprint is part of the **[Awesome HA Blueprints](https://epmatt.github.io/awesome-ha-blueprints)
+    project**.\n\nℹ️ Version 2022.08.08\n"
+  source_url: https://github.com/EPMatt/awesome-ha-blueprints/blob/main/blueprints/controllers/ikea_e1743/ikea_e1743.yaml
+  domain: automation
+  input:
+    integration:
+      name: (Required) Integration
+      description: Integration used for connecting the remote with Home Assistant. Select one of the available values.
+      selector:
+        select:
+          options:
+            - deCONZ
+            - ZHA
+            - Zigbee2MQTT
+    controller_device:
+      name: (deCONZ, ZHA) Controller Device
+      description: The controller device to use for the automation. Choose a value only if the remote is integrated with deCONZ, ZHA.
+      default: ''
+      selector:
+        device:
+    controller_entity:
+      name: (Zigbee2MQTT) Controller Entity
+      description: The action sensor of the controller to use for the automation. Choose a value only if the remote is integrated with Zigbee2MQTT.
+      default: ''
+      selector:
+        entity:
+          domain: sensor
+    helper_last_controller_event:
+      name: (Required) Helper - Last Controller Event
+      description: Input Text used to store the last event fired by the controller. You will need to manually create a text input entity for this, please read the blueprint Additional Notes for more info.
+      default: ''
+      selector:
+        entity:
+          domain: input_text
+          
+    # inputs for custom actions
+    
+    ## button 1 / tap dial custom actions
+    action_button_1:
+      name: Button 1
+      description: Action to run on button 1 press release
+      default: []
+      selector:
+        action:
+    action_dial_rotate_left_step_button_1:
+      name: Dial Rotate Left Step Button 1
+      description: Action to run on rotate left step press release
+      default: []
+      selector:
+        action:
+    action_dial_rotate_left_slow_button_1:
+      name: Dial Rotate Left Slow Button 1
+      description: Action to run on rotate left step press release
+      default: []
+      selector:
+        action:
+    action_dial_rotate_left_fast_button_1:
+      name: Dial Rotate Left Fast Button 1
+      description: Action to run on rotate left step press release
+      default: []
+      selector:
+        action:
+    action_dial_rotate_right_step_button_1:
+      name: Dial Rotate Right Step Button 1
+      description: Action to run on rotate left step press release
+      default: []
+      selector:
+        action:
+    action_dial_rotate_right_slow_button_1:
+      name: Dial Rotate Right Slow Button 1
+      description: Action to run on rotate right step press release
+      default: []
+      selector:
+        action:
+    action_dial_rotate_right_fast_button_1:
+      name: Dial Rotate Right Fast Button 1
+      description: Action to run on rotate right step press release
+      default: []
+      selector:
+        action:
+
+    ## button 2 / tap dial custom actions
+    action_button_2:
+      name: Button 2
+      description: Action to run on button 2 press release
+      default: []
+      selector:
+        action:
+    action_dial_rotate_left_step_button_2:
+      name: Dial Rotate Left Step Button 2
+      description: Action to run on rotate left step press release
+      default: []
+      selector:
+        action:
+    action_dial_rotate_left_slow_button_2:
+      name: Dial Rotate Left Slow Button 2
+      description: Action to run on rotate left step press release
+      default: []
+      selector:
+        action:
+    action_dial_rotate_left_fast_button_2:
+      name: Dial Rotate Left Fast Button 2
+      description: Action to run on rotate left step press release
+      default: []
+      selector:
+        action:
+    action_dial_rotate_right_step_button_2:
+      name: Dial Rotate Right Step Button 2
+      description: Action to run on rotate left step press release
+      default: []
+      selector:
+        action:
+    action_dial_rotate_right_slow_button_2:
+      name: Dial Rotate Right Slow Button 2
+      description: Action to run on rotate left step press release
+      default: []
+      selector:
+        action:
+    action_dial_rotate_right_fast_button_2:
+      name: Dial Rotate Right Fast Button 2
+      description: Action to run on rotate right step press release
+      default: []
+      selector:
+        action:
+
+    ## button 3 / tap dial custom actions
+    action_button_3:
+      name: Button 3
+      description: Action to run on button 3 press release
+      default: []
+      selector:
+        action:
+    action_dial_rotate_left_step_button_3:
+      name: Dial Rotate Left Step Button 3
+      description: Action to run on rotate left step press release
+      default: []
+      selector:
+        action:
+    action_dial_rotate_left_slow_button_3:
+      name: Dial Rotate Left Slow Button 3
+      description: Action to run on rotate left step press release
+      default: []
+      selector:
+        action:
+    action_dial_rotate_left_fast_button_3:
+      name: Dial Rotate Left Fast Button 3
+      description: Action to run on rotate left step press release
+      default: []
+      selector:
+        action:
+    action_dial_rotate_right_step_button_3:
+      name: Dial Rotate Right Step Button 3
+      description: Action to run on rotate right step press release
+      default: []
+      selector:
+        action:
+    action_dial_rotate_right_slow_button_3:
+      name: Dial Rotate Right Slow Button 3
+      description: Action to run on rotate right step press release
+      default: []
+      selector:
+        action:
+    action_dial_rotate_right_fast_button_3:
+      name: Dial Rotate Right Fast Button 3
+      description: Action to run on rotate right step press release
+      default: []
+      selector:
+        action:
+
+## button 1 / tap dial custom actions
+    action_button_4:
+      name: Button 4
+      description: Action to run on button 4 press release
+      default: []
+      selector:
+        action:
+    action_dial_rotate_left_step_button_4:
+      name: Dial Rotate Left Step Button 4
+      description: Action to run on rotate left step press release
+      default: []
+      selector:
+        action:
+    action_dial_rotate_left_slow_button_4:
+      name: Dial Rotate Left Slow Button 4
+      description: Action to run on rotate left step press release
+      default: []
+      selector:
+        action:
+    action_dial_rotate_left_fast_button_4:
+      name: Dial Rotate Left Fast Button 4
+      description: Action to run on rotate left step press release
+      default: []
+      selector:
+        action:
+    action_dial_rotate_right_step_button_4:
+      name: Dial Rotate Right Step Button 4
+      description: Action to run on rotate right step press release
+      default: []
+      selector:
+        action:
+    action_dial_rotate_right_slow_button_4:
+      name: Dial Rotate Right Slow Button 4
+      description: Action to run on rotate right step press release
+      default: []
+      selector:
+        action:
+    action_dial_rotate_right_fast_button_4:
+      name: Dial Rotate Right Fast Button 4
+      description: Action to run on rotate right step press release
+      default: []
+      selector:
+        action:
+
+    # helpers used to properly recognize the remote button events
+    helper_double_press_delay:
+      name: (Optional) Helper - Double Press delay
+      description: Max delay between the first and the second button press for the double press event. Provide a value only if you are using a double press action. Increase this value if you notice that the double press action is not triggered properly.
+      default: 500
+      selector:
+        number:
+          min: 100
+          max: 5000
+          unit_of_measurement: milliseconds
+          mode: box
+          step: 10
+    helper_debounce_delay:
+      name: (Optional) Helper - Debounce delay
+      description:
+        Delay used for debouncing RAW controller events, by default set to 0. A value of 0 disables the debouncing feature. Increase this value if you notice custom actions or linked Hooks running multiple times when interacting with the device. When the controller needs to be debounced,
+        usually a value of 100 is enough to remove all duplicate events.
+      default: 0
+      selector:
+        number:
+          min: 0
+          max: 1000
+          unit_of_measurement: milliseconds
+          mode: box
+          step: 10
+
+# Automation schema
+variables:
+  # convert input tags to variables, to be used in templates
+  integration: !input integration
+  helper_last_controller_event: !input helper_last_controller_event
+  helper_double_press_delay: !input helper_double_press_delay
+  helper_debounce_delay: !input helper_debounce_delay
+  # integration id used to select items in the action mapping
+  integration_id: '{{ integration | lower }}'
+  # adjusted debounce delay so that the resulting double press delay is exactly as specified by the user when running the action, taking also account of debouncing
+  # make sure it never goes below the minimum double press delay
+  adjusted_double_press_delay: '{{ [helper_double_press_delay - helper_debounce_delay,
+    100] | max }}'
+  # mapping between actions and integrations
+  actions_mapping:
+    deconz:
+      button_up_short:
+      - '1002'
+      button_up_long:
+      - '1001'
+      button_up_release:
+      - '1003'
+      button_down_short:
+      - '2002'
+      button_down_long:
+      - '2001'
+      button_down_release:
+      - '2003'
+    zha:
+      button_up_short:
+      - 'on'
+      button_up_long:
+      - move_with_on_off_0_83
+      button_up_release:
+      - stop
+      button_down_short:
+      - 'off'
+      button_down_long:
+      - move_1_83
+      button_down_release:
+      - stop
+    zigbee2mqtt:
+      button_1_press:
+        - 'button_1_press'
+      button_1_press_release:
+        - 'button_1_press_release'
+      button_1_hold:
+        - 'button_1_hold'
+      button_1_hold_release:
+        - 'button_1_hold_release'
+      button_2_press:
+        - 'button_2_press'
+      button_2_press_release:
+        - 'button_2_press_release'
+      button_2_hold:
+        - 'button_2_hold'
+      button_2_hold_release:
+        - 'button_2_hold_release'
+      button_3_press:
+        - 'button_3_press'
+      button_3_press_release:
+        - 'button_3_press_release'
+      button_3_hold:
+        - 'button_3_hold'
+      button_3_hold_release:
+        - 'button_3_hold_release'
+      button_4_press:
+        - 'button_4_press'
+      button_4_press_release:
+        - 'button_4_press_release'
+      button_4_hold:
+        - 'button_4_hold'
+      button_4_hold_release:
+        - 'button_4_hold_release'
+
+      dial_rotate_left_step_button_1:
+        - 'dial_rotate_left_step_button_1'
+      dial_rotate_left_step_button_2:
+        - 'dial_rotate_left_step_button_2'
+      dial_rotate_left_step_button_3:
+        - 'dial_rotate_left_step_button_3'
+      dial_rotate_left_step_button_4:
+        - 'dial_rotate_left_step_button_4'
+      dial_rotate_left_slow_button_1:
+        - 'dial_rotate_left_slow_button_1'
+      dial_rotate_left_slow_button_2:
+        - 'dial_rotate_left_slow_button_2'
+      dial_rotate_left_slow_button_3:
+        - 'dial_rotate_left_slow_button_3'
+      dial_rotate_left_slow_button_4:
+        - 'dial_rotate_left_slow_button_4'
+      dial_rotate_left_fast_button_1:
+        - 'dial_rotate_left_fast_button_1'
+      dial_rotate_left_fast_button_2:
+        - 'dial_rotate_left_fast_button_2'
+      dial_rotate_left_fast_button_3:
+        - 'dial_rotate_left_fast_button_3'
+      dial_rotate_left_fast_button_4:
+        - 'dial_rotate_left_fast_button_4'
+
+      dial_rotate_right_step_button_1:
+        - 'dial_rotate_right_step_button_1'
+      dial_rotate_right_step_button_2:
+        - 'dial_rotate_right_step_button_2'
+      dial_rotate_right_step_button_3:
+        - 'dial_rotate_right_step_button_3'
+      dial_rotate_right_step_button_4:
+        - 'dial_rotate_right_step_button_4'
+      dial_rotate_right_slow_button_1:
+        - 'dial_rotate_right_slow_button_1'
+      dial_rotate_right_slow_button_2:
+        - 'dial_rotate_right_slow_button_2'
+      dial_rotate_right_slow_button_3:
+        - 'dial_rotate_right_slow_button_3'
+      dial_rotate_right_slow_button_4:
+        - 'dial_rotate_right_slow_button_4'
+      dial_rotate_right_fast_button_1:
+        - 'dial_rotate_right_fast_button_1'
+      dial_rotate_right_fast_button_2:
+        - 'dial_rotate_right_fast_button_2'
+      dial_rotate_right_fast_button_3:
+        - 'dial_rotate_right_fast_button_3'
+      dial_rotate_right_fast_button_4:
+        - 'dial_rotate_right_fast_button_4'
+
+      dial_rotate_left_step:
+        - 'dial_rotate_left_step'
+      dial_rotate_left_slow:
+        - 'dial_rotate_left_slow'
+      dial_rotate_left_fast:
+        - 'dial_rotate_left_fast'
+      dial_rotate_right_step:
+        - 'dial_rotate_right_step'
+      dial_rotate_right_slow:
+        - 'dial_rotate_right_slow'
+      dial_rotate_right_fast:
+        - 'dial_rotate_right_fast'
+
+  # pre-choose actions for buttons based on configured integration
+  # no need to perform this task at automation runtime
+  button_1_press: '{{ actions_mapping[integration_id]["button_1_press"] }}'
+  button_1_press_release: '{{ actions_mapping[integration_id]["button_1_press_release"] }}'
+  button_1_hold: '{{ actions_mapping[integration_id]["button_1_hold"] }}'
+  button_1_hold_release: '{{ actions_mapping[integration_id]["button_1_hold_release"] }}'
+  button_2_press: '{{ actions_mapping[integration_id]["button_2_press"] }}'
+  button_2_press_release: '{{ actions_mapping[integration_id]["button_2_press_release"] }}'
+  button_2_hold: '{{ actions_mapping[integration_id]["button_2_hold"] }}'
+  button_2_hold_release: '{{ actions_mapping[integration_id]["button_2_hold_release"] }}'
+  button_3_press: '{{ actions_mapping[integration_id]["button_3_press"] }}'
+  button_3_press_release: '{{ actions_mapping[integration_id]["button_3_press_release"] }}'
+  button_3_hold: '{{ actions_mapping[integration_id]["button_3_hold"] }}'
+  button_3_hold_release: '{{ actions_mapping[integration_id]["button_3_hold_release"] }}'
+  button_4_press: '{{ actions_mapping[integration_id]["button_4_press"] }}'
+  button_4_press_release: '{{ actions_mapping[integration_id]["button_4_press_release"] }}'
+  button_4_hold: '{{ actions_mapping[integration_id]["button_4_hold"] }}'
+  button_4_hold_release: '{{ actions_mapping[integration_id]["button_4_hold_release"] }}'
+  dial_rotate_left_step: '{{ actions_mapping[integration_id]["dial_rotate_left_step"] }}'
+  dial_rotate_left_slow: '{{ actions_mapping[integration_id]["dial_rotate_left_slow"] }}'
+  dial_rotate_left_fast: '{{ actions_mapping[integration_id]["dial_rotate_left_fast"] }}'
+  dial_rotate_right_step: '{{ actions_mapping[integration_id]["dial_rotate_right_step"] }}'
+  dial_rotate_right_slow: '{{ actions_mapping[integration_id]["dial_rotate_right_slow"] }}'
+  dial_rotate_right_fast: '{{ actions_mapping[integration_id]["dial_rotate_right_fast"] }}'
+  dial_rotate_left_step_button_1: '{{ actions_mapping[integration_id]["dial_rotate_left_step_button_1"] }}'
+  dial_rotate_left_step_button_2: '{{ actions_mapping[integration_id]["dial_rotate_left_step_button_2"] }}'
+  dial_rotate_left_step_button_3: '{{ actions_mapping[integration_id]["dial_rotate_left_step_button_3"] }}'
+  dial_rotate_left_step_button_4: '{{ actions_mapping[integration_id]["dial_rotate_left_step_button_4"] }}'
+  dial_rotate_left_slow_button_1: '{{ actions_mapping[integration_id]["dial_rotate_left_slow_button_1"] }}'
+  dial_rotate_left_slow_button_2: '{{ actions_mapping[integration_id]["dial_rotate_left_slow_button_2"] }}'
+  dial_rotate_left_slow_button_3: '{{ actions_mapping[integration_id]["dial_rotate_left_slow_button_3"] }}'
+  dial_rotate_left_slow_button_4: '{{ actions_mapping[integration_id]["dial_rotate_left_slow_button_4"] }}'
+  dial_rotate_left_fast_button_1: '{{ actions_mapping[integration_id]["dial_rotate_left_fast_button_1"] }}'
+  dial_rotate_left_fast_button_2: '{{ actions_mapping[integration_id]["dial_rotate_left_fast_button_2"] }}'
+  dial_rotate_left_fast_button_3: '{{ actions_mapping[integration_id]["dial_rotate_left_fast_button_3"] }}'
+  dial_rotate_left_fast_button_4: '{{ actions_mapping[integration_id]["dial_rotate_left_fast_button_4"] }}'
+  dial_rotate_right_step_button_1: '{{ actions_mapping[integration_id]["dial_rotate_right_step_button_1"] }}'
+  dial_rotate_right_step_button_2: '{{ actions_mapping[integration_id]["dial_rotate_right_step_button_2"] }}'
+  dial_rotate_right_step_button_3: '{{ actions_mapping[integration_id]["dial_rotate_right_step_button_3"] }}'
+  dial_rotate_right_step_button_4: '{{ actions_mapping[integration_id]["dial_rotate_right_step_button_4"] }}'
+  dial_rotate_right_slow_button_1: '{{ actions_mapping[integration_id]["dial_rotate_right_slow_button_1"] }}'
+  dial_rotate_right_slow_button_2: '{{ actions_mapping[integration_id]["dial_rotate_right_slow_button_2"] }}'
+  dial_rotate_right_slow_button_3: '{{ actions_mapping[integration_id]["dial_rotate_right_slow_button_3"] }}'
+  dial_rotate_right_slow_button_4: '{{ actions_mapping[integration_id]["dial_rotate_right_slow_button_4"] }}'
+  dial_rotate_right_fast_button_1: '{{ actions_mapping[integration_id]["dial_rotate_right_fast_button_1"] }}'
+  dial_rotate_right_fast_button_2: '{{ actions_mapping[integration_id]["dial_rotate_right_fast_button_2"] }}'
+  dial_rotate_right_fast_button_3: '{{ actions_mapping[integration_id]["dial_rotate_right_fast_button_3"] }}'
+  dial_rotate_right_fast_button_4: '{{ actions_mapping[integration_id]["dial_rotate_right_fast_button_4"] }}'
+
+  # integrations which need to store the previous press event to determine which button was released
+  integrations_with_prev_event_storage: [zha, zigbee2mqtt]
+  # build data to send within a controller event
+  controller_entity: !input controller_entity
+  controller_device: !input controller_device
+  controller_id: '{% if integration_id=="zigbee2mqtt" %}{{controller_entity}}{% else %}{{controller_device}}{% endif %}'
+mode: restart
+max_exceeded: silent
+trigger:
+  # trigger for zigbee2mqtt
+  - platform: event
+    event_type: state_changed
+    event_data:
+      entity_id: !input controller_entity
+  # trigger for other integrations
+  - platform: event
+    event_type:
+      - deconz_event
+      - zha_event
+    event_data:
+      device_id: !input controller_device
+condition:
+  - condition: and
+    conditions:
+      # check that the button event is not empty
+      - >-
+        {%- set trigger_action -%}
+        {%- if integration_id == "zigbee2mqtt" -%}
+        {{ trigger.event.data.new_state.state }}
+        {%- elif integration_id == "deconz" -%}
+        {{ trigger.event.data.event }}
+        {%- elif integration_id == "zha" -%}
+        {{ trigger.event.data.command }}{{"_" if trigger.event.data.args|length > 0}}{{ trigger.event.data.args|join("_") }}
+        {%- endif -%}
+        {%- endset -%}
+        {{ trigger_action not in ["","None"] }}
+      # only for zigbee2mqtt, check if the event is relative to a real state change, and not only some minor changes in the sensor attributes
+      # this is required since multiple state_changed events are fired for a single button press, with the result of the automation being triggered multiple times
+      - '{{ integration_id != "zigbee2mqtt" or trigger.event.data.new_state.state != trigger.event.data.old_state.state }}'
+action:
+  # debouncing - when automation is triggered multiple times, the last automation run is the one which completes execution, due to mode restart
+  # therefore previous runs must wait for the debounce delay before executing any other action
+  # if the delay expires and the automation is still running it means it's the last run and execution can continue
+  - delay:
+      milliseconds: !input helper_debounce_delay
+  # extract button event from the trigger
+  # provide a single string value to check against
+  - variables:
+      trigger_action: >-
+        {%- if integration_id == "zigbee2mqtt" -%}
+        {{ trigger.event.data.new_state.state }}
+        {%- elif integration_id == "deconz" -%}
+        {{ trigger.event.data.event }}
+        {%- elif integration_id == "zha" -%}
+        {{ trigger.event.data.command }}{{"_" if trigger.event.data.args|length > 0}}{{ trigger.event.data.args|join("_") }}
+        {%- endif -%}
+      trigger_delta: '{{ (as_timestamp(now()) - ((states(helper_last_controller_event) | from_json).t if helper_last_controller_event is not none and (states(helper_last_controller_event) | regex_match("^\{((\"a\":\".*\"|\"t\":\d+\.\d+)(,)?){2}\}$")) else as_timestamp("1970-01-01 00:00:00"))) * 1000 }}'
+      last_controller_event: '{{ (states(helper_last_controller_event) | from_json).a if helper_last_controller_event is not none and (states(helper_last_controller_event) | regex_match("^\{((\"a\":\".*\"|\"t\":\d+\.\d+)(,)?){2}\}$")) else "" }}'
+  # update helper
+  - choose:
+      - conditions: '{{ trigger_action[-7:] | string in "release" }}'
+        sequence:
+        - service: input_text.set_value
+          data:
+            entity_id: !input helper_last_controller_event
+            value: '{{ {"a":trigger_action,"t":as_timestamp(now())} | to_json }}'
+
+  # choose the sequence to run based on the received button event
+  - choose:
+      - conditions: '{{ trigger_action | string in dial_rotate_left_step }}'
+        sequence:
+        - choose:
+          - conditions: '{{ last_controller_event[7] | string in "1" }}'
+            sequence:
+            - event: ahb_controller_event
+              event_data:
+                controller: '{{ controller_id }}'
+                action: dial_rotate_left_step_button_1
+            - choose:
+              - conditions: []
+                sequence: !input action_dial_rotate_left_step_button_1
+          - conditions: '{{ last_controller_event[7] | string in "2" }}'
+            sequence:
+            - event: ahb_controller_event
+              event_data:
+                controller: '{{ controller_id }}'
+                action: dial_rotate_left_step_button_2
+            - choose:
+              - conditions: []
+                sequence: !input action_dial_rotate_left_step_button_2
+          - conditions: '{{ last_controller_event[7] | string in "3" }}'
+            sequence:
+            - event: ahb_controller_event
+              event_data:
+                controller: '{{ controller_id }}'
+                action: dial_rotate_left_step_button_3
+            - choose:
+              - conditions: []
+                sequence: !input action_dial_rotate_left_step_button_3
+          - conditions: '{{ last_controller_event[7] | string in "4" }}'
+            sequence:
+            - event: ahb_controller_event
+              event_data:
+                controller: '{{ controller_id }}'
+                action: dial_rotate_left_step_button_4
+            - choose:
+              - conditions: []
+                sequence: !input action_dial_rotate_left_step_button_4
+
+      - conditions: '{{ trigger_action | string in dial_rotate_left_slow }}'
+        sequence:
+        - choose:
+          - conditions: '{{ last_controller_event[7] | string in "1" }}'
+            sequence:
+            - event: ahb_controller_event
+              event_data:
+                controller: '{{ controller_id }}'
+                action: dial_rotate_left_slow_button_1
+            - choose:
+              - conditions: []
+                sequence: !input action_dial_rotate_left_slow_button_1
+          - conditions: '{{ last_controller_event[7] | string in "2" }}'
+            sequence:
+            - event: ahb_controller_event
+              event_data:
+                controller: '{{ controller_id }}'
+                action: dial_rotate_left_slow_button_2
+            - choose:
+              - conditions: []
+                sequence: !input action_dial_rotate_left_slow_button_2
+          - conditions: '{{ last_controller_event[7] | string in "3" }}'
+            sequence:
+            - event: ahb_controller_event
+              event_data:
+                controller: '{{ controller_id }}'
+                action: dial_rotate_left_slow_button_3
+            - choose:
+              - conditions: []
+                sequence: !input action_dial_rotate_left_slow_button_3
+          - conditions: '{{ last_controller_event[7] | string in "4" }}'
+            sequence:
+            - event: ahb_controller_event
+              event_data:
+                controller: '{{ controller_id }}'
+                action: dial_rotate_left_slow_button_4
+            - choose:
+              - conditions: []
+                sequence: !input action_dial_rotate_left_slow_button_4
+
+      - conditions: '{{ trigger_action | string in dial_rotate_left_fast }}'
+        sequence:
+        - choose:
+          - conditions: '{{ last_controller_event[7] | string in "1" }}'
+            sequence:
+            - event: ahb_controller_event
+              event_data:
+                controller: '{{ controller_id }}'
+                action: dial_rotate_left_fast_button_1
+            - choose:
+              - conditions: []
+                sequence: !input action_dial_rotate_left_fast_button_1
+          - conditions: '{{ last_controller_event[7] | string in "2" }}'
+            sequence:
+            - event: ahb_controller_event
+              event_data:
+                controller: '{{ controller_id }}'
+                action: dial_rotate_left_fast_button_2
+            - choose:
+              - conditions: []
+                sequence: !input action_dial_rotate_left_fast_button_2
+          - conditions: '{{ last_controller_event[7] | string in "3" }}'
+            sequence:
+            - event: ahb_controller_event
+              event_data:
+                controller: '{{ controller_id }}'
+                action: dial_rotate_left_fast_button_3
+            - choose:
+              - conditions: []
+                sequence: !input action_dial_rotate_left_fast_button_3
+          - conditions: '{{ last_controller_event[7] | string in "4" }}'
+            sequence:
+            - event: ahb_controller_event
+              event_data:
+                controller: '{{ controller_id }}'
+                action: dial_rotate_left_fast_button_4
+            - choose:
+              - conditions: []
+                sequence: !input action_dial_rotate_left_fast_button_4
+
+      - conditions: '{{ trigger_action | string in dial_rotate_right_step }}'
+        sequence:
+        - choose:
+          - conditions: '{{ last_controller_event[7] | string in "1" }}'
+            sequence:
+            - event: ahb_controller_event
+              event_data:
+                controller: '{{ controller_id }}'
+                action: dial_rotate_right_step_button_1
+            - choose:
+              - conditions: []
+                sequence: !input action_dial_rotate_right_step_button_1
+          - conditions: '{{ last_controller_event[7] | string in "2" }}'
+            sequence:
+            - event: ahb_controller_event
+              event_data:
+                controller: '{{ controller_id }}'
+                action: dial_rotate_right_step_button_2
+            - choose:
+              - conditions: []
+                sequence: !input action_dial_rotate_right_step_button_2
+          - conditions: '{{ last_controller_event[7] | string in "3" }}'
+            sequence:
+            - event: ahb_controller_event
+              event_data:
+                controller: '{{ controller_id }}'
+                action: dial_rotate_right_step_button_3
+            - choose:
+              - conditions: []
+                sequence: !input action_dial_rotate_right_step_button_3
+          - conditions: '{{ last_controller_event[7] | string in "4" }}'
+            sequence:
+            - event: ahb_controller_event
+              event_data:
+                controller: '{{ controller_id }}'
+                action: dial_rotate_right_step_button_4
+            - choose:
+              - conditions: []
+                sequence: !input action_dial_rotate_right_step_button_4
+
+      - conditions: '{{ trigger_action | string in dial_rotate_right_slow }}'
+        sequence:
+        - choose:
+          - conditions: '{{ last_controller_event[7] | string in "1" }}'
+            sequence:
+            - event: ahb_controller_event
+              event_data:
+                controller: '{{ controller_id }}'
+                action: dial_rotate_right_slow_button_1
+            - choose:
+              - conditions: []
+                sequence: !input action_dial_rotate_right_slow_button_1
+          - conditions: '{{ last_controller_event[7] | string in "2" }}'
+            sequence:
+            - event: ahb_controller_event
+              event_data:
+                controller: '{{ controller_id }}'
+                action: dial_rotate_right_slow_button_2
+            - choose:
+              - conditions: []
+                sequence: !input action_dial_rotate_right_slow_button_2
+          - conditions: '{{ last_controller_event[7] | string in "3" }}'
+            sequence:
+            - event: ahb_controller_event
+              event_data:
+                controller: '{{ controller_id }}'
+                action: dial_rotate_right_slow_button_3
+            - choose:
+              - conditions: []
+                sequence: !input action_dial_rotate_right_slow_button_3
+          - conditions: '{{ last_controller_event[7] | string in "4" }}'
+            sequence:
+            - event: ahb_controller_event
+              event_data:
+                controller: '{{ controller_id }}'
+                action: dial_rotate_right_slow_button_4
+            - choose:
+              - conditions: []
+                sequence: !input action_dial_rotate_right_slow_button_4
+
+      - conditions: '{{ trigger_action | string in dial_rotate_right_fast }}'
+        sequence:
+        - choose:
+          - conditions: '{{ last_controller_event[7] | string in "1" }}'
+            sequence:
+            - event: ahb_controller_event
+              event_data:
+                controller: '{{ controller_id }}'
+                action: dial_rotate_right_fast_button_1
+            - choose:
+              - conditions: []
+                sequence: !input action_dial_rotate_right_fast_button_1
+          - conditions: '{{ last_controller_event[7] | string in "2" }}'
+            sequence:
+            - event: ahb_controller_event
+              event_data:
+                controller: '{{ controller_id }}'
+                action: dial_rotate_right_fast_button_2
+            - choose:
+              - conditions: []
+                sequence: !input action_dial_rotate_right_fast_button_2
+          - conditions: '{{ last_controller_event[7] | string in "3" }}'
+            sequence:
+            - event: ahb_controller_event
+              event_data:
+                controller: '{{ controller_id }}'
+                action: dial_rotate_right_fast_button_3
+            - choose:
+              - conditions: []
+                sequence: !input action_dial_rotate_right_fast_button_3
+          - conditions: '{{ last_controller_event[7] | string in "4" }}'
+            sequence:
+            - event: ahb_controller_event
+              event_data:
+                controller: '{{ controller_id }}'
+                action: dial_rotate_right_fast_button_4
+            - choose:
+              - conditions: []
+                sequence: !input action_dial_rotate_right_fast_button_4
+
+      - conditions: '{{ trigger_action | string in button_1_press_release }}'
+        sequence:
+          # store the double press event in the last controller event helper
+          - choose:
+              # if previous event was a short press
+              - conditions: '{{ trigger_action | string in states(helper_last_controller_event) and trigger_delta | int <= helper_double_press_delay | int }}'
+                sequence:
+                  # store the double press event in the last controller event helper
+                  - service: input_text.set_value
+                    data:
+                      entity_id: !input helper_last_controller_event
+                      value: '{{ {"a":"button_1_double_press_release","t":as_timestamp(now())} | to_json }}'
+            # previous event was not a short press
+            default:
+              # wait for the double press event to occur, within the provided delay
+              # if the second press is received, automation is restarted
+              - delay:
+                  milliseconds: '{{ adjusted_double_press_delay }}'
+              # if delay expires, no second press was received, therefore run the short press action
+              # run the short press action
+              # fire the event
+              - event: ahb_controller_event
+                event_data:
+                  controller: '{{ controller_id }}'
+                  action: button_1_press_release
+              # run the custom action
+              - choose:
+                  - conditions: []
+                    sequence: !input action_button_1
+      - conditions: '{{ trigger_action | string in button_2_press_release }}'
+        sequence:
+          # store the double press event in the last controller event helper
+          - choose:
+              # if previous event was a short press
+              - conditions: '{{ trigger_action | string in states(helper_last_controller_event) and trigger_delta | int <= helper_double_press_delay | int }}'
+                sequence:
+                  # store the double press event in the last controller event helper
+                  - service: input_text.set_value
+                    data:
+                      entity_id: !input helper_last_controller_event
+                      value: '{{ {"a":"button_2_double_press_release","t":as_timestamp(now())} | to_json }}'
+            # previous event was not a short press
+            default:
+              # wait for the double press event to occur, within the provided delay
+              # if the second press is received, automation is restarted
+              - delay:
+                  milliseconds: '{{ adjusted_double_press_delay }}'
+              # if delay expires, no second press was received, therefore run the short press action
+              # run the short press action
+              # fire the event
+              - event: ahb_controller_event
+                event_data:
+                  controller: '{{ controller_id }}'
+                  action: button_2_press_release
+              # run the custom action
+              - choose:
+                  - conditions: []
+                    sequence: !input action_button_2
+      - conditions: '{{ trigger_action | string in button_3_press_release }}'
+        sequence:
+          # store the double press event in the last controller event helper
+          - choose:
+              # if previous event was a short press
+              - conditions: '{{ trigger_action | string in states(helper_last_controller_event) and trigger_delta | int <= helper_double_press_delay | int }}'
+                sequence:
+                  # store the double press event in the last controller event helper
+                  - service: input_text.set_value
+                    data:
+                      entity_id: !input helper_last_controller_event
+                      value: '{{ {"a":"button_3_double_press_release","t":as_timestamp(now())} | to_json }}'
+            # previous event was not a short press
+            default:
+              # wait for the double press event to occur, within the provided delay
+              # if the second press is received, automation is restarted
+              - delay:
+                  milliseconds: '{{ adjusted_double_press_delay }}'
+              # if delay expires, no second press was received, therefore run the short press action
+              # run the short press action
+              # fire the event
+              - event: ahb_controller_event
+                event_data:
+                  controller: '{{ controller_id }}'
+                  action: button_3_press_release
+              # run the custom action
+              - choose:
+                  - conditions: []
+                    sequence: !input action_button_3
+      - conditions: '{{ trigger_action | string in button_4_press_release }}'
+        sequence:
+          # store the double press event in the last controller event helper
+          - choose:
+              # if previous event was a short press
+              - conditions: '{{ trigger_action | string in states(helper_last_controller_event) and trigger_delta | int <= helper_double_press_delay | int }}'
+                sequence:
+                  # store the double press event in the last controller event helper
+                  - service: input_text.set_value
+                    data:
+                      entity_id: !input helper_last_controller_event
+                      value: '{{ {"a":"button_4_double_press_release","t":as_timestamp(now())} | to_json }}'
+            # previous event was not a short press
+            default:
+              # wait for the double press event to occur, within the provided delay
+              # if the second press is received, automation is restarted
+              - delay:
+                  milliseconds: '{{ adjusted_double_press_delay }}'
+              # if delay expires, no second press was received, therefore run the short press action
+              # run the short press action
+              # fire the event
+              - event: ahb_controller_event
+                event_data:
+                  controller: '{{ controller_id }}'
+                  action: button_4_press_release
+              # run the custom action
+              - choose:
+                  - conditions: []
+                    sequence: !input action_button_4
