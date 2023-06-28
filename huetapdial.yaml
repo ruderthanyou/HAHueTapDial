@@ -73,6 +73,18 @@ blueprint:
       default: []
       selector:
         action:
+    action_button_1_hold:
+      name: Button 1 Hold
+      description: Action to run on button 1 hold release
+      default: []
+      selector:
+        action:
+    action_button_1_double:
+      name: Button 1 Double
+      description: Action to run on button 1 press release double
+      default: []
+      selector:
+        action:        
     action_dial_rotate_left_step_button_1:
       name: Dial Rotate Left Step Button 1
       description: Action to run on rotate left step press release
@@ -119,6 +131,18 @@ blueprint:
       default: []
       selector:
         action:
+    action_button_2_hold:
+      name: Button 2 Hold
+      description: Action to run on button 2 hold release
+      default: []
+      selector:
+        action:
+    action_button_2_double:
+      name: Button 2 Double
+      description: Action to run on button 2 press release double
+      default: []
+      selector:
+        action:    
     action_dial_rotate_left_step_button_2:
       name: Dial Rotate Left Step Button 2
       description: Action to run on rotate left step press release
@@ -165,6 +189,18 @@ blueprint:
       default: []
       selector:
         action:
+    action_button_3_hold:
+      name: Button 3 Hold
+      description: Action to run on button 3 hold release
+      default: []
+      selector:
+        action:
+    action_button_3_double:
+      name: Button 3 Double
+      description: Action to run on button 3 press release double
+      default: []
+      selector:
+        action:    
     action_dial_rotate_left_step_button_3:
       name: Dial Rotate Left Step Button 3
       description: Action to run on rotate left step press release
@@ -211,6 +247,18 @@ blueprint:
       default: []
       selector:
         action:
+    action_button_4_hold:
+      name: Button 4 Hold
+      description: Action to run on button 4 hold release
+      default: []
+      selector:
+        action:
+    action_button_4_double:
+      name: Button 4 Double
+      description: Action to run on button 4 press release double
+      default: []
+      selector:
+        action:    
     action_dial_rotate_left_step_button_4:
       name: Dial Rotate Left Step Button 4
       description: Action to run on rotate left step press release
@@ -398,18 +446,22 @@ variables:
   # no need to perform this task at automation runtime
   button_1_press: '{{ actions_mapping[integration_id]["button_1_press"] }}'
   button_1_press_release: '{{ actions_mapping[integration_id]["button_1_press_release"] }}'
+  button_1_press_release_double: '{{ actions_mapping[integration_id]["button_1_press_release_double"] }}'
   button_1_hold: '{{ actions_mapping[integration_id]["button_1_hold"] }}'
   button_1_hold_release: '{{ actions_mapping[integration_id]["button_1_hold_release"] }}'
   button_2_press: '{{ actions_mapping[integration_id]["button_2_press"] }}'
   button_2_press_release: '{{ actions_mapping[integration_id]["button_2_press_release"] }}'
+  button_2_press_release_double: '{{ actions_mapping[integration_id]["button_2_press_release_double"] }}'
   button_2_hold: '{{ actions_mapping[integration_id]["button_2_hold"] }}'
   button_2_hold_release: '{{ actions_mapping[integration_id]["button_2_hold_release"] }}'
   button_3_press: '{{ actions_mapping[integration_id]["button_3_press"] }}'
   button_3_press_release: '{{ actions_mapping[integration_id]["button_3_press_release"] }}'
+  button_3_press_release_double: '{{ actions_mapping[integration_id]["button_3_press_release_double"] }}'
   button_3_hold: '{{ actions_mapping[integration_id]["button_3_hold"] }}'
   button_3_hold_release: '{{ actions_mapping[integration_id]["button_3_hold_release"] }}'
   button_4_press: '{{ actions_mapping[integration_id]["button_4_press"] }}'
   button_4_press_release: '{{ actions_mapping[integration_id]["button_4_press_release"] }}'
+  button_4_press_release_double: '{{ actions_mapping[integration_id]["button_4_press_release_double"] }}'
   button_4_hold: '{{ actions_mapping[integration_id]["button_4_hold"] }}'
   button_4_hold_release: '{{ actions_mapping[integration_id]["button_4_hold_release"] }}'
   dial_rotate_left_step: '{{ actions_mapping[integration_id]["dial_rotate_left_step"] }}'
@@ -811,6 +863,14 @@ action:
                     data:
                       entity_id: !input helper_last_controller_event
                       value: '{{ {"a":"button_1_double_press_release","t":as_timestamp(now())} | to_json }}'
+                  - event: ahb_controller_event
+                    event_data:
+                      controller: '{{ controller_id }}'
+                      action: button_1_press_release_double
+                  # run the custom action
+                  - choose:
+                      - conditions: []
+                        sequence: !input action_button_1_double
             # previous event was not a short press
             default:
               # wait for the double press event to occur, within the provided delay
@@ -828,6 +888,20 @@ action:
               - choose:
                   - conditions: []
                     sequence: !input action_button_1
+      ######################
+      # BUTTON 1           #
+      # HOLD RELEASE       #
+      ######################
+      - conditions: '{{ trigger_action | string in button_1_hold_release }}'
+        sequence:
+          - event: ahb_controller_event
+            event_data:
+              controller: '{{ controller_id }}'
+              action: button_1_hold_release
+          # run the custom action
+          - choose:
+            - conditions: []
+              sequence: !input action_button_1_hold
       #################
       # BUTTON 2      #
       # PRESS RELEASE #
@@ -844,6 +918,14 @@ action:
                     data:
                       entity_id: !input helper_last_controller_event
                       value: '{{ {"a":"button_2_double_press_release","t":as_timestamp(now())} | to_json }}'
+                  - event: ahb_controller_event
+                    event_data:
+                      controller: '{{ controller_id }}'
+                      action: button_2_press_release_double
+                  # run the custom action
+                  - choose:
+                      - conditions: []
+                        sequence: !input action_button_2_double
             # previous event was not a short press
             default:
               # wait for the double press event to occur, within the provided delay
@@ -861,6 +943,20 @@ action:
               - choose:
                   - conditions: []
                     sequence: !input action_button_2
+      ######################
+      # BUTTON 2           #
+      # HOLD RELEASE       #
+      ######################
+      - conditions: '{{ trigger_action | string in button_2_hold_release }}'
+        sequence:
+          - event: ahb_controller_event
+            event_data:
+              controller: '{{ controller_id }}'
+              action: button_2_hold_release
+          # run the custom action
+          - choose:
+            - conditions: []
+              sequence: !input action_button_2_hold
       #################
       # BUTTON 3      #
       # PRESS RELEASE #
@@ -877,6 +973,14 @@ action:
                     data:
                       entity_id: !input helper_last_controller_event
                       value: '{{ {"a":"button_3_double_press_release","t":as_timestamp(now())} | to_json }}'
+                  - event: ahb_controller_event
+                    event_data:
+                      controller: '{{ controller_id }}'
+                      action: button_3_press_release_double
+                  # run the custom action
+                  - choose:
+                      - conditions: []
+                        sequence: !input action_button_3_double
             # previous event was not a short press
             default:
               # wait for the double press event to occur, within the provided delay
@@ -894,6 +998,20 @@ action:
               - choose:
                   - conditions: []
                     sequence: !input action_button_3
+      ######################
+      # BUTTON 3           #
+      # HOLD RELEASE       #
+      ######################
+      - conditions: '{{ trigger_action | string in button_3_hold_release }}'
+        sequence:
+          - event: ahb_controller_event
+            event_data:
+              controller: '{{ controller_id }}'
+              action: button_3_hold_release
+          # run the custom action
+          - choose:
+            - conditions: []
+              sequence: !input action_button_3_hold
       #################
       # BUTTON 4      #
       # PRESS RELEASE #
@@ -910,6 +1028,14 @@ action:
                     data:
                       entity_id: !input helper_last_controller_event
                       value: '{{ {"a":"button_4_double_press_release","t":as_timestamp(now())} | to_json }}'
+                  - event: ahb_controller_event
+                    event_data:
+                      controller: '{{ controller_id }}'
+                      action: button_4_press_release_double
+                  # run the custom action
+                  - choose:
+                      - conditions: []
+                        sequence: !input action_button_4_double
             # previous event was not a short press
             default:
               # wait for the double press event to occur, within the provided delay
@@ -927,3 +1053,17 @@ action:
               - choose:
                   - conditions: []
                     sequence: !input action_button_4
+      ######################
+      # BUTTON 4           #
+      # HOLD RELEASE       #
+      ######################
+      - conditions: '{{ trigger_action | string in button_4_hold_release }}'
+        sequence:
+          - event: ahb_controller_event
+            event_data:
+              controller: '{{ controller_id }}'
+              action: button_4_hold_release
+          # run the custom action
+          - choose:
+            - conditions: []
+              sequence: !input action_button_4_hold
